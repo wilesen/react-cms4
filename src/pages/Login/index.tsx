@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 import styles from './index.less';
+import { setCookie } from 'utils'
 
 interface IProps {
-    form: any
+    form: any;
+    history: any
 }
-
 class Login extends React.Component<IProps> {
     public handleSubmit = (e: any) => {
         e.preventDefault();
         this.props.form.validateFields((err: Error, values: any) => {
             if (!err) {
                 console.log('Received values of form: ', values);
+                setCookie('isLogin', true, 1);
+                this.props.history.push('/')
             }
         });
     };
@@ -47,13 +50,9 @@ class Login extends React.Component<IProps> {
                             valuePropName: 'checked',
                             initialValue: true,
                         })(<Checkbox>Remember me</Checkbox>)}
-                        <a className="login-form-forgot" href="">
-                            Forgot password
-            </a>
                         <Button type="primary" htmlType="submit" className="login-form-button">
                             Log in
             </Button>
-                        Or <a href="">register now!</a>
                     </Form.Item>
                 </Form>
             </div>

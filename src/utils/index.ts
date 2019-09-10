@@ -1,5 +1,12 @@
 import require from './require';
+import {
+    setCookie,
+    getCookie
+} from './cache'
+
 
 export {
-    require
+    require,
+    setCookie,
+    getCookie
 }

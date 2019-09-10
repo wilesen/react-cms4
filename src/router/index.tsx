@@ -1,18 +1,24 @@
 import * as React from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import AuthRoute from '../component/Function/AuthRoute';
-import { spawn } from 'child_process';
 
 const { lazy, Suspense } = React;
 interface IProps {
-    history: any
+
 }
 
 const RouteConfig = [
     {
+        path: '/',
+        component: lazy(() => import('../pages/Home')),
+        routeType: AuthRoute,
+        authCode: '101',
+        exact: true,
+    },
+    {
         path: '/login',
         component: lazy(() => import('../pages/Login')),
-        routeType: Route,
+        routeType: AuthRoute,
         exact: false,
         authCode: null
     },
@@ -28,14 +34,7 @@ const RouteConfig = [
         component: lazy(() => import('../pages/notFound')),
         routeType: Route,
         exact: true,
-        authCode: '101'
     },
-    {
-        path: '/',
-        component: lazy(() => import('../pages/notFound')),
-        routeType: AuthRoute,
-        exact: false,
-    }
 ]
 
 const Router = (props: IProps) => (

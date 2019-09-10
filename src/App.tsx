@@ -1,34 +1,15 @@
 import React from 'react';
-import logo from './logo.svg';
 import styles from './App.less';
-import { Button } from 'antd';
-import request from 'utils/require';
+import Route from 'router'
 
 interface IProps {
   history: any
 }
 
 const App: React.FC<IProps> = () => {
-  request.get('/getdata', {}).then((res: any) => {
-    console.log(res)
-  })
   return (
     <div className={styles.App}>
-      <header className={styles.AppHeader}>
-        <img src={logo} className={styles.AppLogo} alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className={styles.AppLink}
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button>按钮</Button>
-      </header>
+      <Route />
     </div>
   );
 }
