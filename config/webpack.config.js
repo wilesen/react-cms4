@@ -45,7 +45,7 @@ const imageInlineSizeLimit = parseInt(
 const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
-const cssRegex = /\.css$/;
+const CSS_LESS_REGEX = /\.(css|less)$/;
 const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
@@ -106,6 +106,7 @@ module.exports = function (webpackEnv) {
           sourceMap: isEnvProduction && shouldUseSourceMap,
         },
       },
+      { loader: 'less-loader' }
     ].filter(Boolean);
     if (preProcessor) {
       loaders.push(
@@ -398,53 +399,58 @@ module.exports = function (webpackEnv) {
               },
             },
             {
-              test: cssRegex,
-              exclude: cssModuleRegex,
+              test: CSS_LESS_REGEX,
+              include: /src/,
               use: getStyleLoaders({
-                importLoaders: 1,
-                module: true,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
-              }),
-              sideEffects: true,
-            },
-            {
-              test: cssModuleRegex,
-              use: getStyleLoaders({
-                importLoaders: 1,
-                sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
+                sourceMap: isEnvProduction && shouldUseSourceMap,
               }),
-            },
-            {
-              test: lessRegex,
-              exclude: lessModuleRegex,
-              use: getStyleLoaders({}, 'less-loader')
-            },
-            {
-              test: sassRegex,
-              exclude: sassModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                },
-                'sass-loader'
-              ),
               sideEffects: true,
             },
             {
-              test: sassModuleRegex,
-              use: getStyleLoaders(
-                {
-                  importLoaders: 2,
-                  sourceMap: isEnvProduction && shouldUseSourceMap,
-                  modules: true,
-                  getLocalIdent: getCSSModuleLocalIdent,
-                },
-                'sass-loader'
-              ),
+              test: CSS_LESS_REGEX,
+              include: /node_modules/,
+              use: getStyleLoaders({}),
+              sideEffects: true,
             },
+            // {
+            //   test: cssModuleRegex,
+            //   use: getStyleLoaders({
+            //     importLoaders: 1,
+            //     sourceMap: isEnvProduction && shouldUseSourceMap,
+            //     modules: true,
+            //     getLocalIdent: getCSSModuleLocalIdent,
+            //   }),
+            // },
+            // {
+            //   test: lessRegex,
+            //   exclude: lessModuleRegex,
+            //   use: getStyleLoaders({}, 'less-loader')
+            // },
+            // {
+            //   test: sassRegex,
+            //   exclude: sassModuleRegex,
+            //   use: getStyleLoaders(
+            //     {
+            //       importLoaders: 2,
+            //       sourceMap: isEnvProduction && shouldUseSourceMap,
+            //     },
+            //     'sass-loader'
+            //   ),
+            //   sideEffects: true,
+            // },
+            // {
+            //   test: sassModuleRegex,
+            //   use: getStyleLoaders(
+            //     {
+            //       importLoaders: 2,
+            //       sourceMap: isEnvProduction && shouldUseSourceMap,
+            //       modules: true,
+            //       getLocalIdent: getCSSModuleLocalIdent,
+            //     },
+            //     'sass-loader'
+            //   ),
+            // },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.

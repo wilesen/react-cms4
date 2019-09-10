@@ -1,8 +1,10 @@
 import React from 'react';
 import logo from './logo.svg';
 import styles from './App.less';
+import { Button } from 'antd'
 
 const App: React.FC = () => {
+  console.log('App', styles)
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
@@ -18,6 +20,7 @@ const App: React.FC = () => {
         >
           Learn React
         </a>
+        <Button>按钮</Button>
       </header>
     </div>
   );
