@@ -1,10 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import styles from './App.less';
-import { Button } from 'antd'
+import { Button } from 'antd';
+import request from 'utils/require';
 
-const App: React.FC = () => {
-  console.log('App', styles)
+interface IProps {
+  history: any
+}
+
+const App: React.FC<IProps> = () => {
+  request.get('/getdata', {}).then((res: any) => {
+    console.log(res)
+  })
   return (
     <div className={styles.App}>
       <header className={styles.AppHeader}>
