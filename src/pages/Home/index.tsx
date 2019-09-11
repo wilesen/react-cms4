@@ -6,6 +6,8 @@
  */
 import * as React from 'react';
 import styles from './index.less';
+import { Button } from 'antd';
+import { setCookie } from 'utils'
 
 interface IProps {
     form: any;
@@ -16,7 +18,13 @@ class Home extends React.Component<IProps> {
 
     public render() {
         return (
-            'This is Home page'
+            <>
+                <span>'This is Home page'</span>
+                <Button onClick={() => {
+                    setCookie('isLogin', false);
+                    this.props.history.push('/login')
+                }}>退出登录</Button>
+            </>
         );
     }
 }

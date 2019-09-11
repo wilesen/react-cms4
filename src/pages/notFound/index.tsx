@@ -25,7 +25,7 @@ class NotFound extends React.Component<IProps> {
     public backHome = () => {
         console.log(this.props);
         const { history } = this.props;
-        history.push('/123123')
+        history.push('/index')
     }
 
     public render() {

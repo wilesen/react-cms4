@@ -2,30 +2,37 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-05 15:13:25 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-10 17:40:35
+ * @Last Modified time: 2019-09-11 14:55:24
  */
 import * as React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, RouteProps, Redirect, RouteComponentProps } from 'react-router-dom';
 import useCan from '../Hooks/useCan';
-import { RouteProps } from 'react-router/index';
+// import { RouteProps } from 'react-router/index';
 import { getCookie } from 'utils'
 
-interface IAuthProps {
-    authCode: string
+// 路由守卫
+interface IAuthProps extends RouteProps {
+    children?: React.ReactNode[],
+    exact: boolean,
+    path: string,
+    component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>,
+    authCode: string,
 }
-const AuthRoute = (props: RouteProps & IAuthProps): any => {
-    const { authCode } = props;
-    const [isCode] = useCan(authCode);
-    const isLogin = getCookie('isLogin');
 
+const AuthRoute = (props: IAuthProps): React.ReactNode => {
+    const { authCode, path } = props;
+    const [isCode] = useCan(authCode || '');
+    const isLogin = getCookie('isLogin');
     if (isLogin) {
         if (isCode) {
-            return <Route {...props} />
+            return <Route path={`/${props.path}`} {...props} />
         }
         if (!authCode) {
             return <Redirect to='/' />
         }
-        return <Redirect to='/404' />
+        return <Redirect to='' />
+    } else if (!isLogin && path === '/login') {
+        return <Route {...props} />
     }
     return <Redirect to='/login' />
 }
