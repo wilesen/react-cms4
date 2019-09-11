@@ -5,7 +5,7 @@ interface IProps {
 
 class HOME extends React.Component<IProps> {
     public render() {
-        return ('Page1');
+        return 'Page1';
     }
 }
 
