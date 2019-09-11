@@ -21,15 +21,17 @@ interface IAuthRouteProps {
 }
 
 
-const RouteConfig: React.ReactNode[] = [
+export const RouteConfig: React.ReactNode[] = [
     {
         path: '/index',
+        name: '首页',
         component: lazy(() => import('../pages/Home')),
         routeType: AuthRoute,
         authCode: '101',
         exact: true,
         children: [
             {
+                name: 'page1',
                 path: '/page1',
                 component: lazy(() => import('../pages/Page1')),
                 routeType: AuthRoute,
@@ -39,24 +41,13 @@ const RouteConfig: React.ReactNode[] = [
         ]
     },
     {
-        path: '/login',
-        component: lazy(() => import('../pages/Login')),
-        routeType: AuthRoute,
-        exact: false
-    },
-    {
         path: '/page1',
+        name: 'page2',
         component: lazy(() => import('../pages/Page1')),
         routeType: AuthRoute,
         exact: true,
         authCode: '101'
-    },
-    // 定义404页面
-    {
-        component: lazy(() => import('../pages/notFound')),
-        routeType: Route,
-        exact: false,
-    },
+    }
 ]
 
 const SplitRoute = (routeData: React.ReactNode[]): React.ReactNode[] => {

@@ -314,6 +314,7 @@ module.exports = function (webpackEnv) {
               use: getStyleLoaders({
                 modules: true,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
+                localIdentName: '[local]--[hash:base64:5]'
               }),
               sideEffects: true,
             },

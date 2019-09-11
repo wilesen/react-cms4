@@ -13,7 +13,8 @@ const { lazy, Suspense } = React;
 const history = createBrowserHistory();
 
 const LoginComponent = lazy(() => import('pages/Login'));
-const IndexComponent = lazy(() => import('App'));
+const IndexComponent = lazy(() => import('pages/Layout/Container'));
+const NotFound = lazy(() => import('pages/notFound'));
 
 ReactDOM.render(
     <ConfigProvider locale={zhCN}>
@@ -22,6 +23,7 @@ ReactDOM.render(
                 <Switch>
                     <Route path='/Login' exact={false} component={LoginComponent} />
                     <Route path='/' exact={false} component={IndexComponent} />
+                    <Route exact={false} component={NotFound} />
                 </Switch>
             </Suspense>
         </HashRouter>
