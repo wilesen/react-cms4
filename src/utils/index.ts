@@ -1,12 +1,11 @@
 import require from './require';
-import {
-    setCookie,
-    getCookie
-} from './cache'
+import { setCookie, getCookie } from './cache'
+import getDefaultKey from './tool'
 
 
 export {
     require,
     setCookie,
-    getCookie
+    getCookie,
+    getDefaultKey
 }

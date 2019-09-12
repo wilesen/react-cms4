@@ -1,6 +1,7 @@
 import React from 'react';
-import { Layout, Menu, Icon } from 'antd';
+import { Layout } from 'antd';
 import styles from './index.less';
+import logo from 'assets/logo.png';
 import Router from 'router';
 import LeftMenu from '../Menu'
 
@@ -16,7 +17,10 @@ const App: React.FC<IProps> = () => {
         trigger={null}
         collapsible
       >
-        <div className="logo" />
+        <div className={styles.logoContainer} >
+          <img className={styles.logo} src={logo} alt="" />
+          <span className={styles.title}>React-CMS4</span>
+        </div>
         <LeftMenu />
       </Sider>
       <Layout>

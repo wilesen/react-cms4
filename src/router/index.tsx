@@ -1,66 +1,17 @@
+/*
+ * @Author: tingzi.wen 
+ * @Date: 2019-09-12 09:40:34 
+ * @Last Modified by: tingzi.wen
+ * @Last Modified time: 2019-09-12 10:24:28
+ */
 import * as React from 'react';
-import { HashRouter, Route, Switch, RouteProps, RouteComponentProps, Redirect } from 'react-router-dom';
-import AuthRoute from 'component/Function/AuthRoute';
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
+import RouteConfig from 'config/routeConfig'
 
 const { lazy, Suspense } = React;
 interface IProps {
 
 }
-
-interface IAuthProps {
-    authCode?: string;
-}
-
-interface IAuthRouteProps {
-    routeType: React.ReactNode,
-    children: React.ReactNode[],
-    exact: boolean,
-    path: string,
-    component: React.ComponentType<RouteComponentProps<any>> | React.ComponentType<any>,
-    authCode: string,
-}
-
-
-export const RouteConfig: React.ReactNode[] = [
-    {
-        path: '/home',
-        name: '首页',
-        routeType: Route,
-        authCode: '101',
-        exact: true,
-        displayMenu: true,
-        children: [
-            {
-                path: '/home/index',
-                name: '首页',
-                component: lazy(() => import('../pages/Home')),
-                routeType: AuthRoute,
-                authCode: '101',
-                exact: true,
-                displayMenu: true,
-            },
-            {
-                name: 'page1',
-                path: '/home/page1',
-                component: lazy(() => import('../pages/Page1')),
-                routeType: AuthRoute,
-                displayMenu: true,
-                exact: true,
-                authCode: '101'
-            },
-        ]
-    },
-    {
-        path: '/page2',
-        name: 'page2',
-        component: lazy(() => import('../pages/Page1')),
-        routeType: AuthRoute,
-        displayMenu: true,
-        exact: true,
-        authCode: '101'
-    },
-]
-
 
 const SplitRoute = (routeData: React.ReactNode[]): React.ReactNode[] => {
     const returnRoute: React.ReactNode[] = [];
