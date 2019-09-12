@@ -2,7 +2,7 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-12 09:40:34 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-12 10:24:28
+ * @Last Modified time: 2019-09-12 14:20:53
  */
 import * as React from 'react';
 import { HashRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -33,7 +33,7 @@ const Router = (props: IProps) => (
     <HashRouter>
         <Suspense fallback={null} >
             <Switch>
-                <Route path="/" exact render={() => (<Redirect to="/home/index" />)} />
+                <Route path="/" exact render={() => (<Redirect to="/home" />)} />
                 {SplitRoute(RouteConfig)}
                 <Route exact={false} component={lazy(() => import('pages/notFound'))} />
             </Switch>

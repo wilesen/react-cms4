@@ -2,31 +2,74 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-11 15:26:54 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-11 20:36:40
+ * @Last Modified time: 2019-09-12 15:33:38
  */
 
 .container {
   width: 100%;
   height: 100%;
 
+  .slider {
+    flex: 0 0 160px !important;
+    max-width: 160px !important;
+    min-width: 160px !important;
+    width: 160px !important;
+    background: #282F37;
+    padding-top: 20px;
+  }
+
   .logoContainer {
     height: 64px;
-    width: 100%;
-    background: #002140;
+    width: 64px;
+    margin: 0 auto;
+    border-radius: 50%;
     text-align: center;
-    // border: 12px solid #fff;
+    overflow: hidden;
 
     .logo {
-      margin: 5px 0px;
-      height: calc(100% - 5px);
+      width: 65px;
     }
+  }
+
+  .titleContainer {
+    text-align: center;
+    padding-bottom: 14px;
+    border-bottom: 3px solid #982d23;
 
     .title {
       color: #fff;
       font-weight: 600;
-      padding-left: 11px;
       font-size: 16px;
     }
+  }
+
+
+  .header {
+    background: #F1F1F1;
+    padding: 0px
+  }
+
+  .content {
+    // margin: 24px 16px 0px;
+    background: #fff;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .footer {
+    text-align: center;
+    background: #ffffff
+  }
+
+  :global {
+    .ant-menu {
+      background: #282f37 !important;
+    }
+
+    .ant-menu-item-selected {
+      background-color: #FE5343 !important;
+    }
+
   }
 
 }

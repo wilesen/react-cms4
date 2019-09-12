@@ -2,7 +2,7 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-12 09:40:33 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-12 10:33:03
+ * @Last Modified time: 2019-09-12 14:27:26
  */
 import * as React from 'react';
 import { Route } from 'react-router-dom';
@@ -32,7 +32,7 @@ const RouteConfig: IRouteConfig[] = [
     },
     {
         path: '/page',
-        name: 'page',
+        name: '菜单一',
         component: lazy(() => import('../pages/Page1')),
         routeType: AuthRoute,
         displayMenu: true,
@@ -67,6 +67,15 @@ const RouteConfig: IRouteConfig[] = [
                 authCode: '101'
             },
         ]
+    },
+    {
+        path: '/menu',
+        name: '菜单二',
+        component: lazy(() => import('../pages/Page1')),
+        routeType: AuthRoute,
+        displayMenu: true,
+        exact: true,
+        authCode: '101'
     },
 ]
 

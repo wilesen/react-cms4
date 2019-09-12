@@ -3,32 +3,37 @@ import { Layout } from 'antd';
 import styles from './index.less';
 import logo from 'assets/logo.png';
 import Router from 'router';
-import LeftMenu from '../Menu'
+import LeftMenu from '../Menu';
+import Header from '../Header';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 interface IProps {
   history: any
 }
 
-const App: React.FC<IProps> = () => {
+const App: React.FC<IProps> = (props: IProps) => {
+  console.log(props)
   return (
     <Layout className={styles.container}>
       <Sider
         trigger={null}
         collapsible
+        className={styles.slider}
       >
         <div className={styles.logoContainer} >
           <img className={styles.logo} src={logo} alt="" />
+        </div>
+        <div className={styles.titleContainer}>
           <span className={styles.title}>React-CMS4</span>
         </div>
         <LeftMenu />
       </Sider>
       <Layout>
-        <Header style={{ background: '#fff', padding: 0 }} />
-        <Content style={{ margin: '24px 16px 0' }}>
+        <Header className={styles.header} history={props.history} />
+        <Content className={styles.content} >
           <Router />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer className={styles.footer} >React-CMS4 ©2018 Created by Ant Design</Footer>
       </Layout>
     </Layout>
   );
