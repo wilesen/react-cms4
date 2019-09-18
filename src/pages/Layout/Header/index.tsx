@@ -2,7 +2,7 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-12 11:27:30 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-12 15:36:10
+ * @Last Modified time: 2019-09-18 10:08:01
  */
 import React from 'react';
 import { Layout, Menu, Dropdown, Icon } from 'antd';
@@ -17,7 +17,6 @@ interface IProps {
 }
 
 const Head: React.FC<IProps> = (props: IProps) => {
-    console.log(props)
     const menu = (
         <Menu style={{ marginTop: '20px', textAlign: 'center' }} onClick={({ item, key, keyPath, domEvent }) => {
             if (key === '3') {

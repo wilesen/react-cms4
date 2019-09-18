@@ -2,7 +2,7 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-12 09:40:33 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-12 14:27:26
+ * @Last Modified time: 2019-09-18 10:12:24
  */
 import * as React from 'react';
 import { Route } from 'react-router-dom';
@@ -24,7 +24,7 @@ const RouteConfig: IRouteConfig[] = [
     {
         path: '/home',
         name: '首页',
-        routeType: Route,
+        routeType: AuthRoute,
         component: lazy(() => import('../pages/Home')),
         authCode: '101',
         exact: true,
@@ -37,7 +37,7 @@ const RouteConfig: IRouteConfig[] = [
         routeType: AuthRoute,
         displayMenu: true,
         exact: true,
-        authCode: '101',
+        authCode: '102',
         children: [
             {
                 name: 'page1',
@@ -46,7 +46,7 @@ const RouteConfig: IRouteConfig[] = [
                 routeType: AuthRoute,
                 displayMenu: true,
                 exact: true,
-                authCode: '101'
+                authCode: '1021'
             },
             {
                 name: 'page2',
@@ -55,7 +55,7 @@ const RouteConfig: IRouteConfig[] = [
                 routeType: AuthRoute,
                 displayMenu: true,
                 exact: true,
-                authCode: '101'
+                authCode: '1022'
             },
             {
                 name: 'page3',
@@ -64,7 +64,7 @@ const RouteConfig: IRouteConfig[] = [
                 routeType: AuthRoute,
                 displayMenu: true,
                 exact: true,
-                authCode: '101'
+                authCode: '1023'
             },
         ]
     },
@@ -75,7 +75,7 @@ const RouteConfig: IRouteConfig[] = [
         routeType: AuthRoute,
         displayMenu: true,
         exact: true,
-        authCode: '101'
+        authCode: '103'
     },
 ]
 
