@@ -10,9 +10,7 @@ import { getStorage } from 'utils';
 import * as _ from 'lodash';
 
 const useCan = (code: string) => {
-    console.log(getStorage('authCode'))
     const AuthList = (getStorage('authCode') || '').split(',');
-    console.log('xxxx', AuthList)
     const IsCode = Boolean(_.indexOf(AuthList, code) !== -1)
     return [IsCode, AuthList]
 }
