@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import styles from './index.less';
 import logo from 'assets/logo.png';
-import Router from 'router';
+import Router from 'component/Function/Routes';
 import LeftMenu from '../Menu';
 import Header from '../Header';
 

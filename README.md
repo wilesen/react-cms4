@@ -29,16 +29,13 @@ project-root/
   node_modules/
   package.json
   public/
-    index.html
-    favicon.ico
   src/
     assets //静态文件资源
     component //公共组件
+    config  //路由配置
     mock  //mock数据
-    page  //业务模块组件
-    reducers //reducers
-    router //项目路由配置
+    pages  //业务模块组件
     utils //工具函数库
 ```
 
-## 最后，干活吧！
+## 有问题，欢迎留言，共同学习！

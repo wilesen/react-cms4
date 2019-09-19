@@ -15,7 +15,7 @@ const { lazy, Suspense } = React;
 const history = createBrowserHistory();
 
 const LoginComponent = lazy(() => import('pages/Login'));
-const IndexComponent = lazy(() => import('pages/Layout/Container'));
+const IndexComponent = lazy(() => import('component/Layout/Container'));
 
 request.get('/getAuth').then((res: any) => {
     setStorage('authCode', res.data.code)

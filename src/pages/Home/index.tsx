@@ -19,11 +19,7 @@ class Home extends React.Component<IProps> {
     public render() {
         return (
             <>
-                <span>'This is Home page'</span>
-                <Button onClick={() => {
-                    setCookie('isLogin', false);
-                    this.props.history.push('/login')
-                }}>退出登录</Button>
+                <span>This is Home page</span>
             </>
         );
     }
