@@ -2,7 +2,7 @@
  * @Author: tingzi.wen 
  * @Date: 2019-09-11 15:08:04 
  * @Last Modified by: tingzi.wen
- * @Last Modified time: 2019-09-18 09:36:44
+ * @Last Modified time: 2019-09-19 15:37:58
  */
 import React from 'react';
 import { Menu, Icon } from 'antd';
@@ -50,7 +50,7 @@ const LeftMenu: React.FC<IProps> = (): any => {
         <Menu
             className={styles.menu}
             multiple={false}
-            inlineCollapsed
+            // inlineCollapsed
             theme="dark"
             mode="inline"
             defaultOpenKeys={defaultOpenKeys}

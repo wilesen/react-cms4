@@ -1,0 +1,81 @@
+/*
+ * @Author: tingzi.wen 
+ * @Date: 2019-09-20 15:14:21 
+ * @Last Modified by: tingzi.wen
+ * @Last Modified time: 2019-09-20 16:57:21
+ */
+.carousel {
+    background: #ccc;
+    width: 900px;
+    height: 400px;
+    display: flex;
+
+    :global {
+        .carouselPanel {
+            display: inline-block;
+            width: 290px;
+            margin: 10px 5px;
+            height: 380px;
+            border: 1px solid #000;
+            background: #fff;
+            padding: 20px;
+            order: 2
+        }
+
+        .isFirst {
+            order: 0
+        }
+
+        .isMiddle {
+            margin: 0px 5px;
+            height: 400px;
+            position: relative;
+            top: -10px;
+            order: 1
+        }
+
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            -webkit-animation-name: pluse;
+            animation-name: pluse;
+        }
+
+        @-webkit-keyframes pluse {
+            0% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1)
+            }
+        
+            50% {
+                -webkit-transform: scale3d(1.05,1.05,1.05);
+                transform: scale3d(1.05,1.05,1.05)
+            }
+        
+            to {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1)
+            }
+        }
+
+        @keyframes pluse {
+            0% {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1)
+            }
+        
+            50% {
+                -webkit-transform: scale3d(1.05,1.05,1.05);
+                transform: scale3d(1.05,1.05,1.05)
+            }
+        
+            to {
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1)
+            }
+        }
+
+    }
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useReducer, Component } from 'react';
 import ReactDOM from 'react-dom';
 // import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -8,11 +8,13 @@ import { createBrowserHistory } from 'history';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import request from 'utils/require';
 import { setStorage } from 'utils';
+import AppReducerContent from 'component/Function/AppReducerContent'
 import './mock';
 
 const { lazy, Suspense } = React;
 
-const history = createBrowserHistory();
+// const history = createBrowserHistory();
+
 
 const LoginComponent = lazy(() => import('pages/Login'));
 const IndexComponent = lazy(() => import('component/Layout/Container'));
@@ -22,15 +24,17 @@ request.get('/getAuth').then((res: any) => {
 })
 
 ReactDOM.render(
-    <ConfigProvider locale={zhCN}>
-        <HashRouter>
-            <Suspense fallback={null} >
-                <Switch>
-                    <Route path='/Login' exact={false} component={LoginComponent} />
-                    <Route path='/' exact={false} component={IndexComponent} />
-                </Switch>
-            </Suspense>
-        </HashRouter>
-    </ConfigProvider>
+    <AppReducerContent>
+        <ConfigProvider locale={zhCN}>
+            <HashRouter>
+                <Suspense fallback={null} >
+                    <Switch>
+                        <Route path='/Login' exact={false} component={LoginComponent} />
+                        <Route path='/' exact={false} component={IndexComponent} />
+                    </Switch>
+                </Suspense>
+            </HashRouter>
+        </ConfigProvider>
+    </AppReducerContent>
     , document.getElementById('root'));
 serviceWorker.unregister();
