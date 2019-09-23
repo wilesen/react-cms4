@@ -171,7 +171,7 @@ module.exports = function (webpackEnv) {
               ascii_only: true,
             },
           },
-          parallel: !isWsl,
+          // parallel: !isWsl,
           cache: true,
           sourceMap: shouldUseSourceMap,
         }),
