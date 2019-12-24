@@ -19,6 +19,7 @@ const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const CompressionPlugin = require('compression-webpack-plugin');
 const paths = require('./paths');
 const modules = require('./modules');
 const getClientEnvironment = require('./env');
@@ -319,7 +320,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       // Generates an `index.html` file with the <script> injected.
-      new ProgressBarPlugin({clear:true}),
+      new ProgressBarPlugin({ clear: true }),
       new HtmlWebpackPlugin(
         Object.assign(
           {},
@@ -413,6 +414,13 @@ module.exports = function (webpackEnv) {
         watch: paths.appSrc,
         silent: true,
         formatter: isEnvProduction ? typescriptFormatter : undefined,
+      }),
+      new CompressionPlugin({
+        filename: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8,
       }),
     ].filter(Boolean),
     node: {
